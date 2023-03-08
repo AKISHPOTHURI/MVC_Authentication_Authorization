@@ -35,7 +35,7 @@ namespace Basics.Controllers
             var userPrincipal = new ClaimsPrincipal(new[] { pocIdentity });
 
             HttpContext.SignInAsync(userPrincipal);
-            return RedirectToAction("Index");
+            return RedirectToAction("Secret");
         }
     }
 }

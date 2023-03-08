@@ -26,12 +26,12 @@ namespace Basics
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddAuthentication("CookieAuth")
-            //    .AddCookie("CookieAuth", config =>
-            //    {
-            //        config.Cookie.Name = "Poc.Cookie";
-            //        config.LoginPath = "/Home/Authenticate";
-            //    });
+            services.AddAuthentication("CookieAuth")
+                .AddCookie("CookieAuth", config =>
+                {
+                    config.Cookie.Name = "Poc.Cookie";
+                    config.LoginPath = "/Home/Authenticate";
+                });
             services.AddControllersWithViews();
                 
         }
