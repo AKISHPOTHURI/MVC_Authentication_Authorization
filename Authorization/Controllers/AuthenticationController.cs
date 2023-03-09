@@ -106,11 +106,11 @@
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Registration failed" });
             }
-            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+            if (!(await roleManager.RoleExistsAsync(UserRoles.Admin)))
             {
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
             }
-            if(!await roleManager.RoleExistsAsync(UserRoles.User))
+            if(!(await roleManager.RoleExistsAsync(UserRoles.User)))
             {
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
             }
