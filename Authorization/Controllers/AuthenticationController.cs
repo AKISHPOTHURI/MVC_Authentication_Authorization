@@ -70,11 +70,11 @@
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
 
-                var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:SecretKey"]));
+                var authSighinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
                 var token = new JwtSecurityToken(
                     issuer: _configuration["JWT:ValidIssuer"],
                     audience: _configuration["JWT:ValidAudience"],
-                    expires: DateTime.Now.AddHours(3),
+                    expires: DateTime.Now.AddHours(120),
                     claims: authClaims,
                     signingCredentials: new SigningCredentials(authSighinKey, SecurityAlgorithms.HmacSha256)
                     );

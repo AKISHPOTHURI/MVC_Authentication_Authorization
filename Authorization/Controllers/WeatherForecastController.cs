@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Authorization.Controllers
 {
-
     [Authorize]
     [ApiController]
     [Route("[controller]")]
