@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32630.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basics", "Basics.csproj", "{4D3DC995-1398-46FB-AB3B-6E4050D325E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basic", "Basic.csproj", "{4D3DC995-1398-46FB-AB3B-6E4050D325E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userIdentity", "..\userIdentity\userIdentity.csproj", "{ED5AE36B-8C15-43F1-A06C-F17CEBB4AF22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization", "..\Authorization\Authorization.csproj", "{A0408F76-C21D-45D9-A40E-F5C2646C9021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization", "..\Authorization\Authorization.csproj", "{A0408F76-C21D-45D9-A40E-F5C2646C9021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
