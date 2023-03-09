@@ -85,5 +85,40 @@
             }
             return Unauthorized();
         }
+
+        [HttpPost]
+        [Route("RegisterAdmin")]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel registerModel)
+        {
+            var userExist = await userManager.FindByNameAsync(registerModel.UserName);
+            if (userExist != null)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User Already Exists" });
+            }
+            ApplicationUser user = new ApplicationUser()
+            {
+                Email = registerModel.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = registerModel.UserName
+            };
+            var result = await userManager.CreateAsync(user, registerModel.Password);
+            if (!result.Succeeded)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Registration failed" });
+            }
+            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+            {
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            }
+            if(!await roleManager.RoleExistsAsync(UserRoles.User))
+            {
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+            }
+            if(await roleManager.RoleExistsAsync(UserRoles.Admin))
+            {
+                await userManager.AddToRoleAsync(user, UserRoles.Admin);
+            }
+            return Ok(new Response { Status = "Success", Message = "User registration Successfull" });
+        }
     }
 }
